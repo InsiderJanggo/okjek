@@ -1,11 +1,12 @@
+import { getOneToko } from "@/lib/db/toko";
+
 /**
-*
 * @param {import('next').NextApiRequest} req
 * @param {import('next').NextApiResponse} res
 */
 export default async function handler(req, res) {
-    res.status(200).json({
-        message: 'Welcome to my API'
-    })
+    const toko = await getOneToko(req.query.id)
+
+    res.json(toko)
 }
   

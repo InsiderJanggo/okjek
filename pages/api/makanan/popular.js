@@ -1,11 +1,12 @@
+import { getPopularMakanan } from "@/lib/db/makanan";
+
 /**
-*
 * @param {import('next').NextApiRequest} req
 * @param {import('next').NextApiResponse} res
 */
 export default async function handler(req, res) {
-    res.status(200).json({
-        message: 'Welcome to my API'
-    })
+    const makanan = await getPopularMakanan();
+
+    res.json(makanan)
 }
   
