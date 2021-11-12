@@ -9,10 +9,12 @@ import {
     Heading,
     Icon,
     Box,
-    SimpleGrid
+    SimpleGrid,
+    chakra
 } from '@chakra-ui/react';
 import { FcAssistant, FcDonate, FcInTransit } from 'react-icons/fc';
 import Feature from '@/components/Feature';
+import StatsCard from '@/components/StatsCard';
 
 const FeatureStuff = [
     { 
@@ -86,6 +88,8 @@ export default function AboutPage() {
                         </Stack>
                     </VStack>
                 </Flex>
+
+                {/** Feature Section */}
                 <Box p={4}>
                     <SimpleGrid columns={{ base: 1, md: 3 }} spacing={10}>
                         {FeatureStuff.map((data) => (
@@ -98,6 +102,21 @@ export default function AboutPage() {
                         ))}
                     </SimpleGrid>
                 </Box>
+
+                {/** Stats Section */}
+                <Box p={4} maxW="7xl" mx={'auto'} pt={5} px={{ base: 2, sm: 12, md: 17 }}>
+                        <chakra.h1   textAlign={'center'}
+                        fontSize={'4xl'}
+                        py={10}
+                        fontWeight={'bold'}>
+                            Apa yang dilakukan perusahaan kami?
+                        </chakra.h1>
+                        <SimpleGrid columns={{ base: 1, md: 3 }} spacing={{ base: 5, lg: 8 }}>
+                            <StatsCard title={'Kami melayani'} stat={'50.000 orang'} />
+                            <StatsCard title={'Tersedia'} stat={'30 negara yang berbeda'} />
+                            <StatsCard title={'Kami yang berbicara'} stat={'100 bahasa yang berbeda'} />
+                        </SimpleGrid>
+                </Box>  
             </Layout>
         </div>
     )

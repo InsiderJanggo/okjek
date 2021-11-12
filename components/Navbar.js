@@ -15,6 +15,7 @@ import {
   useDisclosure,
   useColorModeValue,
   Stack,
+  Image
 } from '@chakra-ui/react';
 import { useRouter } from 'next/router';
 import { HamburgerIcon, CloseIcon } from '@chakra-ui/icons';
@@ -48,7 +49,7 @@ export function Navlink({ children, href }) {
     )
 }
 
-export default function Navbar({ session }) {
+export default function Navbar({ session, loading }) {
     const { isOpen, onOpen, onClose } = useDisclosure();
     const router = useRouter()
 
@@ -84,6 +85,14 @@ export default function Navbar({ session }) {
                                 variant={'link'}
                                 cursor={'pointer'}
                                 minW={0}>
+                                {loading && (
+                                    <Image 
+                                        src={'https://i.giphy.com/media/2c85mEsTFONgM0sOQ/giphy.webp'} 
+                                        alt="loading gif" 
+                                        width="100px"
+                                        height="100px"
+                                    />
+                                )}
                                 <Avatar
                                     size={'sm'}
                                     src={session.user.image}
