@@ -1,6 +1,7 @@
 import KartuToko from '@/components/KartuToko'
 import Layout from '@/components/Layout'
 import Head from 'next/head'
+import { getSession } from 'next-auth/client'
 
 export default function Home({ toko }) {
   return (
@@ -27,7 +28,8 @@ export async function getServerSideProps(context) {
 
     return {
         props: {
-           toko
+           toko,
+           session: await getSession(context)
         }
     }
 }
